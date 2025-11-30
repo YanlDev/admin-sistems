@@ -289,36 +289,22 @@ export default function DashboardPage() {
             return (
               <Card
                 key={action.title}
-                className={`transition-all hover:shadow-md ${action.disabled ? 'opacity-60' : 'cursor-pointer'}`}
+                className="transition-all hover:shadow-md cursor-pointer"
               >
                 <CardHeader>
                   <div className={`w-12 h-12 rounded-lg ${action.bgColor} flex items-center justify-center mb-4`}>
                     <Icon className={`h-6 w-6 ${action.color}`} />
                   </div>
-                  <CardTitle className="flex items-center justify-between">
-                    {action.title}
-                    {action.disabled && (
-                      <span className="text-xs font-normal text-muted-foreground">
-                        Próximamente
-                      </span>
-                    )}
-                  </CardTitle>
+                  <CardTitle>{action.title}</CardTitle>
                   <CardDescription>{action.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {action.disabled ? (
-                    <Button disabled className="w-full">
+                  <Link href={action.href}>
+                    <Button className="w-full">
                       <Plus className="mr-2 h-4 w-4" />
-                      Próximamente
+                      Nuevo Registro
                     </Button>
-                  ) : (
-                    <Link href={action.href}>
-                      <Button className="w-full">
-                        <Plus className="mr-2 h-4 w-4" />
-                        Nuevo Registro
-                      </Button>
-                    </Link>
-                  )}
+                  </Link>
                 </CardContent>
               </Card>
             );
